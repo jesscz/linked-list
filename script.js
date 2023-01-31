@@ -3,16 +3,16 @@
 
 
 function List(){
-    let lists = {
+    let listss = {
         head: null
     }
-    let list2 = {
+    let list = {
         head: {
             value: 9087,
             next: null
         }
     }
-    let list = {
+    let listd = {
         head: {
             value: 1,
             next: {
@@ -27,16 +27,29 @@ function List(){
         return list;
     }
     this.append = function(list, value){ //adds new node containing 'value' to the end of the list
-        const createList = new ListItem(value);
+        const createItem = new ListItem(value);
         let curr = list.head;
-        while (curr.next != null){
-            curr = curr.next;
+        
+        if (list.head == null){
+            
+            list.head = createItem.addEnd();
+           
+        }
+        else{
+            while (curr.next != null){
+                curr = curr.next;
+            }
+            if (curr.next == null){
+                curr.next = createItem.addEnd();
+            }
         }
         
-        if (curr.next == null){
-            curr.next = createList.addEnd();
-        }
+        
         return list;
+    }
+    this.prepend = function(list, value){ //adds new node containing 'value to the start of the list
+        
+
     }
     
       
