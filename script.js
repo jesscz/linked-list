@@ -57,7 +57,7 @@ function List(){
 
     }
     
-    this.size = function(){
+    this.size = function(){ //returns the total number of nodes
         let s = 0;
         let curr = list.head;
         if (list.head == null){
@@ -75,7 +75,7 @@ function List(){
         }
     }
 
-    this.head = function(){
+    this.head = function(){ //returns the first node in the list
         if (list.head == null){
             console.log('there are no nodes');
             return;
@@ -83,6 +83,21 @@ function List(){
         else{
             console.log(list.head)
             return list.head;
+        }
+    }
+
+    this.tail = function(){ //returns the last node in the list
+        let curr = list.head;
+        if (list.head == null){
+            console.log('there are no nodes');
+            return;
+        }
+        else{
+            while (curr.next != null){
+                curr = curr.next;
+            }
+            console.log(curr);
+            return curr;
         }
     }
       
@@ -105,7 +120,7 @@ y.append(y.get(), 123456);
 y.prepend(y.get(), 222);
 y.append(y.get(), 1222);
 y.size();
-y.head();
+y.tail();
 // y.get();
 
 
