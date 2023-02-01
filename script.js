@@ -68,12 +68,22 @@ function List(){
             s = 1;
             while (curr.next != null){
                 curr = curr.next;
-                s++
+                s++;
             }
             console.log(s);
             return s;
         }
-    
+    }
+
+    this.head = function(){
+        if (list.head == null){
+            console.log('there are no nodes');
+            return;
+        }
+        else{
+            console.log(list.head)
+            return list.head;
+        }
     }
       
 }
@@ -93,8 +103,9 @@ const y = new List();
 
 y.append(y.get(), 123456);
 y.prepend(y.get(), 222);
-y.append(y.get(), 1222)
+y.append(y.get(), 1222);
 y.size();
+y.head();
 // y.get();
 
 
