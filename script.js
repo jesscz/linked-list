@@ -27,14 +27,14 @@ function List(){
         return list;
     }
 
-    this.append = function(list, value){ //adds new node containing 'value' to the end of the list
+    this.append = function(value){ //adds new node containing 'value' to the end of the list
         const createItem = new ListItem(value);
         let curr = list.head;
-        if (list.head == null){
+        if (list.head == null){ //checks for empty list
             list.head = createItem.addEnd();
         }
         else{
-            while (curr.next != null){
+            while (curr.next != null){ //cycles through list until next is null
                 curr = curr.next;
             }
             if (curr.next == null){
@@ -44,15 +44,15 @@ function List(){
         return list;
     }
 
-    this.prepend = function(list, value){ //adds new node containing 'value to the start of the list
+    this.prepend = function(value){ //adds new node containing 'value' to the start of the list
         const createItem = new ListItem(value);
-        if (list.head == null){
+        if (list.head == null){ //checks for empty list
             list.head = createItem.addEnd();
         }
         else{
-            let hold = list.head;
-            list.head = createItem.addEnd();
-            list.head.next = hold;
+            let hold = list.head; //original node
+            list.head = createItem.addEnd(); //have head point to the new 'value' 
+            list.head.next = hold; //change the next of the new node to the original node there
         }
 
     }
@@ -60,7 +60,7 @@ function List(){
     this.size = function(){ //returns the total number of nodes
         let s = 0;
         let curr = list.head;
-        if (list.head == null){
+        if (list.head == null){ //checks for empty list
             console.log(s);
             return s;
         }
@@ -76,29 +76,67 @@ function List(){
     }
 
     this.head = function(){ //returns the first node in the list
-        if (list.head == null){
+        if (list.head == null){ //checks for empty list
             console.log('there are no nodes');
             return;
         }
         else{
-            console.log(list.head)
+            console.log(list.head) //returns what the value of head is 
             return list.head;
         }
     }
 
     this.tail = function(){ //returns the last node in the list
         let curr = list.head;
-        if (list.head == null){
+        if (list.head == null){ //checks for empty list
             console.log('there are no nodes');
             return;
         }
         else{
-            while (curr.next != null){
+            while (curr.next != null){ //cycles through until next is null
                 curr = curr.next;
             }
             console.log(curr);
             return curr;
         }
+    }
+
+    this.at = function(index){ //returns the node at the given 'index' using zero based indexing for 'index'
+        let i = 0;
+        let curr = list.head;
+        let size = this.size();
+        if (list.head == null){ //checks for empty list
+            console.log('there are no nodes');
+            return null;
+        }
+        else if(index >= size){ //checks if index is larger than number of nodes
+            console.log('index is beyond number of nodes');
+            return null;
+        }
+        else{
+            while (i != index){
+                i++;
+                curr = curr.next;
+            }
+            console.log(curr);
+            return curr;
+        }
+    }
+
+    this.pop = function(){ //removes the last element from the list
+
+    }
+
+    this.contains = function(value){ //returns true if 'value' is in the list and otherwise returns false
+
+    }
+
+    this.find = function(value){ //returns the index of the nodes containing 'value' or null if not found
+
+    }
+
+    this.toString = function(){ //prints the linkedList as a string in the conso le
+
     }
       
 }
@@ -116,11 +154,16 @@ function ListItem (item){
 
 const y = new List();
 
-y.append(y.get(), 123456);
-y.prepend(y.get(), 222);
-y.append(y.get(), 1222);
+y.append(123456);
+
+y.prepend(222);
+y.append(11222);
+y.get();
 y.size();
 y.tail();
+y.at(1);
+y.at(12);
+y.at(0);
 // y.get();
 
 
