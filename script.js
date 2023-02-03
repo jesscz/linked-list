@@ -124,11 +124,31 @@ function List(){
     }
 
     this.pop = function(){ //removes the last element from the list
-
+        let i = 0;
+        let curr = list.head;
+        let size = this.size();
+        if (list.head == null){ //checks for empty list
+            console.log('there are no nodes');
+            return null;
+        }
+        else{
+            while (curr.next.next != null){ //cycles through until next next is null
+                curr = curr.next;
+            }
+            curr.next = null;
+            console.log(list);
+            return list;
+        }
     }
 
     this.contains = function(value){ //returns true if 'value' is in the list and otherwise returns false
-
+        if (list.head == null){ //checks for empty list
+            console.log('there are no nodes');
+            return null;
+        }
+        else{
+            
+        }
     }
 
     this.find = function(value){ //returns the index of the nodes containing 'value' or null if not found
@@ -164,6 +184,7 @@ y.tail();
 y.at(1);
 y.at(12);
 y.at(0);
+y.pop();
 // y.get();
 
 
