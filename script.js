@@ -24,6 +24,7 @@ function List(){
 
     this.get = function(){
         console.log(list);
+        console.log(typeof (list.head.value))
         return list;
     }
 
@@ -141,13 +142,29 @@ function List(){
         }
     }
 
-    this.contains = function(value){ //returns true if 'value' is in the list and otherwise returns false
+    this.contains = function(value){ //returns true if 'v' is in the list and otherwise returns false
+        let curr = list.head;
         if (list.head == null){ //checks for empty list
             console.log('there are no nodes');
             return null;
         }
         else{
-            
+            while (curr.value != value){
+                if (curr.next != null){
+                    curr = curr.next;
+                }
+                else{
+                    break;
+                }
+            }
+            if (curr.value == value){
+                console.log(true);
+                return true;
+            }
+            else{
+                console.log(false); 
+                return false;
+            }
         }
     }
 
@@ -155,7 +172,7 @@ function List(){
 
     }
 
-    this.toString = function(){ //prints the linkedList as a string in the conso le
+    this.toString = function(){ //prints the linkedList as a string in the console
 
     }
       
@@ -185,6 +202,10 @@ y.at(1);
 y.at(12);
 y.at(0);
 y.pop();
+y.contains(1); //true
+y.contains(300); //false
+y.contains(222);
+y.contains(123456);
 // y.get();
 
 
