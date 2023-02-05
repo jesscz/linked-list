@@ -16,7 +16,7 @@ function List(){
         head: {
             value: 1,
             next: {
-                value: 2,
+                value: 1,
                 next: null
             }
         }
@@ -149,31 +149,67 @@ function List(){
             return null;
         }
         else{
-            while (curr.value != value){
-                if (curr.next != null){
-                    curr = curr.next;
+            while (curr.value != value){ //while value is not 'value'
+                if (curr.next != null){ //if next is not null go to the next node
+                    curr = curr.next; 
                 }
-                else{
-                    break;
+                else{ //else if next is null break from code
+                    break; 
                 }
             }
-            if (curr.value == value){
+            if (curr.value == value){ //when value is the 'value' return true
                 console.log(true);
                 return true;
             }
             else{
-                console.log(false); 
+                console.log(false); //else return false (if break from the while loop at the end)
                 return false;
             }
         }
     }
 
     this.find = function(value){ //returns the index of the nodes containing 'value' or null if not found
-
+        let curr = list.head;
+        let arr = [];
+        let i = 0;
+        if (list.head == null){ //checks for empty list
+            console.log('there are no nodes');
+            return null;
+        }
+        else{
+            while (curr != null){ //while curr is not null
+                if (curr.value == value){ //if current value is 'value' record that index and increment index
+                    arr.push(i);
+                    i++;
+                }
+                else{ //else just increment index
+                    i++; 
+                }
+                curr = curr.next;
+            }
+            if (arr.length == 0){ //when the array is empty
+                console.log(false);
+                return false;
+            }
+            else{
+                console.log(arr); //else returns the array whose value at index is 'value'
+                return arr;
+            }
+        }
     }
 
     this.toString = function(){ //prints the linkedList as a string in the console
-
+        let curr = list.head;
+        let s = '';
+        if (list.head == null){ //checks for empty list
+            console.log('there are no nodes');
+        }
+        while(curr != null){ //when curr is not null, add to string 's' the value and space arrow space
+            s += curr.value+' -> '
+            curr = curr.next;
+        }
+        s += 'null' //add null at the end of string 's'
+        console.log (s);
     }
       
 }
@@ -192,7 +228,6 @@ function ListItem (item){
 const y = new List();
 
 y.append(123456);
-
 y.prepend(222);
 y.append(11222);
 y.get();
@@ -204,9 +239,8 @@ y.at(0);
 y.pop();
 y.contains(1); //true
 y.contains(300); //false
-y.contains(222);
-y.contains(123456);
-// y.get();
-
-
-
+y.find(1);
+y.find(222);
+y.find(123456);
+y.find(1233); 
+y.toString();
